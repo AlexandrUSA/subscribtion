@@ -7,6 +7,8 @@ import {Observable, of, throwError} from 'rxjs';
 export class ApiService {
 
   public login(data): Observable<any> {
-    return data.password === '1111' ? of({ token: 123 }) : throwError({ message: 'wrong password' });
+    const isCorrect = data.password === 'admin' && data.login === 'admin';
+
+    return  isCorrect ? of({ token: 123 }) : throwError({ message: 'wrong password' });
   }
 }
